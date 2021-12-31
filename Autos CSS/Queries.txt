@@ -1,0 +1,23 @@
+CREATE DATABASE AUTOS;
+
+GRANT ALL ON AUTOS.* TO 'bhargavram'@'localhost' IDENTIFIED BY 'autos';
+GRANT ALL ON AUTOS.* TO 'bhargavram'@'127.0.0.1' IDENTIFIED BY 'autos';
+
+CREATE TABLE USERS (
+    user_id INT AUTO_INCREMENT,
+    name VARCHAR(30),
+    email VARCHAR(30) UNIQUE,
+    password VARCHAR(30),
+    PRIMARY KEY (user_id)
+);
+
+CREATE TABLE CARS (
+    car_id INT AUTO_INCREMENT,
+    car_name VARCHAR(30),
+    car_company VARCHAR(30),
+    car_year INT,
+    car_price INT,
+    user_id INT,
+    PRIMARY KEY (car_id),
+    FOREIGN KEY (user_id) REFERENCES USERS (user_id)
+);
